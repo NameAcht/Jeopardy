@@ -68,7 +68,8 @@ namespace Jeopardy_winForms
             int questionNumber = int.Parse(button.Name[button.Name.Length - 1].ToString());
             var question = new QuestionForm(categoryNumber, questionNumber);
             question.ShowDialog();
-            question.BackgroundImage.Dispose();
+            if(BackgroundImage != null)
+                question.BackgroundImage.Dispose();
         }
 
         public void UpdateStandings()

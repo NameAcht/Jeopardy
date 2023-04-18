@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EWSJjmztTsDqX56Z4nXd66hReW8/EnplxPpITysNGS2c3NzkCMxScS4ZgmkP/zKK0uMpjh3bOn06UIiGe5U/+g==",
+  "dgSpecHash": "5+/ETbhGKOaRyEU/BoWI7AOt14e2LS4T9tIMQBTvQEiRwUBOHPK5Rx7dh+CVP87FQAIS2YiXwV9BSNuJugCSBQ==",
   "success": true,
-  "projectFilePath": "D:\\repos\\Jeopardy_winForms\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
+  "projectFilePath": "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -175,6 +175,8 @@ namespace Jeopardy_winForms
 
             var qd = new QuestionDesigner(categoryNumber, questionNumber);
             qd.ShowDialog();
+            if (qd.BackgroundImage != null)
+                qd.BackgroundImage.Dispose();
         }
     }
 }

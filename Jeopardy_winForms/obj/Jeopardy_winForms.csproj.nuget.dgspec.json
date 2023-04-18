@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\Jeopardy_winForms\\Jeopardy_winForms\\Jeopardy_winForms.csproj": {}
+    "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\Jeopardy_winForms.csproj": {}
   },
   "projects": {
-    "D:\\repos\\Jeopardy_winForms\\Jeopardy_winForms\\Jeopardy_winForms.csproj": {
+    "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\Jeopardy_winForms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\Jeopardy_winForms\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
+        "projectUniqueName": "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
         "projectName": "Jeopardy_winForms",
-        "projectPath": "D:\\repos\\Jeopardy_winForms\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
+        "projectPath": "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
         "packagesPath": "C:\\Users\\opfer\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\Jeopardy_winForms\\Jeopardy_winForms\\obj\\",
+        "outputPath": "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\VisualStudioSharedInstallation\\NuGetPackages"

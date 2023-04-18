@@ -17,14 +17,15 @@ namespace Jeopardy_winForms
             int x = startLocation.X;
             for (int i = 0; i < categories.Count; i++)
             {
-                Label label = new Label();
-                label.Text = categories[i].Attributes["name"].Value;
-                label.Size = elementSize;
-                label.Location = new Point(x, startLocation.Y);
-                label.Font = new Font(label.Font.FontFamily, elementSize.Width / 10, FontStyle.Regular);
-                label.Name = "labelCat" + (i + 1);
-                label.TextAlign = ContentAlignment.MiddleCenter;
-
+                var label = new Label 
+                {
+                    Text = categories[i].Attributes["name"].Value,
+                    Size = elementSize,
+                    Location = new Point(x, startLocation.Y),
+                    Font = new Font(Label.DefaultFont.FontFamily, elementSize.Width / 10, FontStyle.Regular),
+                    Name = $"labelCat{i + 1}",
+                    TextAlign = ContentAlignment.MiddleCenter    
+                };
                 controls.Add(label);
                 x += elementSize.Width;
             }
@@ -37,12 +38,14 @@ namespace Jeopardy_winForms
                 XmlNodeList questions = categories[i].SelectNodes("question");
                 for (int j = 0; j < questions.Count; j++)
                 {
-                    Button button = new Button();
-                    button.Text = questions[j].Attributes["value"].Value;
-                    button.Location = new Point(x, y);
-                    button.Size = elementSize;
-                    button.Font = new Font(button.Font.FontFamily, 20, FontStyle.Regular);
-                    button.Name = "buttonQuestion_" + i + "_" + j;
+                    Button button = new Button
+                    {
+                        Text = questions[j].Attributes["value"].Value,
+                        Location = new Point(x, y),
+                        Size = elementSize
+                    };
+                    button.Font = new Font(Button.DefaultFont.FontFamily, 20, FontStyle.Regular);
+                    button.Name = $"buttonQuestion_{i}_{j}";
 
                     controls.Add(button);
                     y += elementSize.Height;
