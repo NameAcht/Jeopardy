@@ -9,7 +9,7 @@ namespace Jeopardy_winForms
         {
             foreach(Control button in Controls)
                 if(button.Name.StartsWith("buttonQuestion"))
-                    button.Click += buttonQuestionClick;
+                    button.Click += ButtonQuestion_Click;
         }
         private void UpdateLabelNames(XmlNodeList categories)
         {
@@ -19,7 +19,7 @@ namespace Jeopardy_winForms
                 string categoryName = categories[i].Attributes["name"].Value;
 
                 // Find the label control for the current category
-                string labelName = "labelCat" + (i + 1);
+                string labelName = "labelCat" + (i + 1).ToString();
                 Label categoryLabel = Controls.Find(labelName, true).FirstOrDefault() as Label;
 
                 // Set the text of the label to the category name
@@ -55,13 +55,13 @@ namespace Jeopardy_winForms
             InitializeComponent();
         }
 
-        private void buttonSettings_Click(object sender, EventArgs e)
+        private void ButtonSettings_Click(object sender, EventArgs e)
         {
             var settingsForm = new SettingsForm();
             settingsForm.ShowDialog();
             UpdateSettings();
         }
-        private void buttonQuestionClick(object sender, EventArgs e)
+        private void ButtonQuestion_Click(object sender, EventArgs e)
         {
             var button = sender as Button;
             int categoryNumber = int.Parse(button.Name[button.Name.Length - 3].ToString());

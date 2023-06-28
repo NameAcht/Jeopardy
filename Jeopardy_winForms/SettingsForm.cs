@@ -27,18 +27,19 @@ namespace Jeopardy_winForms
             XmlNodeList categories = config.SelectNodes("jeopardy/category");
             for (int i = 0; i < categories.Count; i++)
             {
-                TextBox textBox = new TextBox();
+                var textBox = new TextBox();
                 textBox.Enabled = false;
                 textBox.Size = elementSize;
                 textBox.Location = new Point(startLocation.X + i * elementSize.Width, startLocation.Y);
                 textBox.Name = "textBoxEditCat" + (i + 1);
 
-                Button button = new Button();
+                var button = new Button();
                 button.Size = elementSize;
                 button.Location = new Point(textBox.Location.X, textBox.Location.Y + 23);
                 button.Text = "Edit Category Name";
                 button.Name = "buttonEditCat" + (i + 1);
-                button.Click += buttonEditCatName_Click;
+                button.Click += HandleEditEvent;
+                textBox.KeyDown += HandleEditEvent;
 
                 Controls.Add(button);
                 Controls.Add(textBox);
@@ -56,7 +57,7 @@ namespace Jeopardy_winForms
         public void Form2_Load(object sender, EventArgs e)
         {
             UpdatePlayerDisplay();
-            XmlDocument config = new XmlDocument();
+            var config = new XmlDocument();
             config.Load("save/config.xml");
 
             CustomElements.CreateField(config, new Size(140, 70), new Point(200, 100), Controls);
@@ -69,7 +70,7 @@ namespace Jeopardy_winForms
             InitializeComponent();
         }
 
-        private void buttonAddPlayer_Click(object sender, EventArgs e)
+        private void ButtonAddPlayer_Click(object sender, EventArgs e)
         {
             // Don't add player if no text was given
             if (textBoxAddPlayer.Text == "")
@@ -126,44 +127,59 @@ namespace Jeopardy_winForms
             UpdatePlayerDisplay();
         }
 
-        private void textBoxAddPlayer_TextChanged(object sender, EventArgs e)
+        private void TextBoxAddPlayer_TextChanged(object sender, EventArgs e)
         {
             if (textBoxAddPlayer.Text.Length > 0)
                 buttonAddPlayer.Enabled = true;
             else
                 buttonAddPlayer.Enabled = false;
         }
-        private void buttonEditCatName_Click(object sender, EventArgs e)
+        private void EditNameSave(int category)
         {
+            // Find elements relevant for saving
+            var textBox = Controls.Find("textBoxEditCat" + category, true).FirstOrDefault() as TextBox;
+            var label = Controls.Find("labelCat" + category, true).FirstOrDefault() as Label;
+            var button = Controls.Find("buttonEditCat" + category, true).FirstOrDefault() as Button;
+
+            var config = new XmlDocument();
+            config.Load("save/config.xml");
+            
+            if (textBox.Text != string.Empty)
+            {
+                var categories = config.SelectNodes("jeopardy/category");
+                categories[category - 1].Attributes["name"].Value = textBox.Text;
+                label.Text = textBox.Text;
+            }
+            button.Text = "Edit Category Name";
+            textBox.Enabled = false;
+            textBox.Clear();
+            config.Save("save/config.xml");
+        }
+
+        private void HandleEditEvent(object sender, EventArgs e)
+        {
+            // Executes when this method is called via Enter key press
+            if (sender is TextBox && (e as KeyEventArgs).KeyCode == Keys.Enter)
+            {
+                var textBox = (TextBox)sender;
+                EditNameSave(int.Parse(textBox.Name[textBox.Name.Length - 1].ToString()));
+                return;
+            }
+            else if (sender is TextBox)
+                return;
+
             var button = sender as Button;
             int categoryNumber = int.Parse(button.Name[button.Name.Length - 1].ToString());
 
-            // This finds the corresponding text box to edit the category name
+            // Finds corresponding TextBox to edit category name
             var editBox = Controls.Find("textBoxEditCat" + categoryNumber, true).FirstOrDefault() as TextBox;
 
-            // Same thing with the label
-            var editLabel = Controls.Find("labelCat" + categoryNumber, true).FirstOrDefault() as Label;
-
-
             if (editBox.Enabled)
-            {                
-                XmlDocument config = new XmlDocument();
-                config.Load("save/config.xml");
-                if(editBox.Text != string.Empty)
-                {
-                    var categories = config.SelectNodes("jeopardy/category");
-                    categories[categoryNumber - 1].Attributes["name"].Value = editBox.Text;
-                    editLabel.Text = editBox.Text;
-                }
-                button.Text = "Edit Category Name";
-                editBox.Enabled = false;
-                editBox.Clear();
-
-                config.Save("save/config.xml");
-            }
+                EditNameSave(int.Parse(editBox.Name[editBox.Name.Length - 1].ToString()));
             else
             {
                 editBox.Enabled = true;
+                editBox.Select();
                 button.Text = "Save";
             }
         }

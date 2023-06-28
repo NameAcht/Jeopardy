@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Jeopardy_winForms
+﻿namespace Jeopardy_winForms
 {
     public partial class QuestionDesigner : Form
     {

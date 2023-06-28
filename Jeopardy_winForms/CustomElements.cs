@@ -13,7 +13,7 @@ namespace Jeopardy_winForms
         {
             XmlNodeList categories = config.SelectNodes("jeopardy/category");
 
-            // Create labels and add to form
+            // Create labels
             int x = startLocation.X;
             for (int i = 0; i < categories.Count; i++)
             {
@@ -30,7 +30,7 @@ namespace Jeopardy_winForms
                 x += elementSize.Width;
             }
 
-            // Create buttons and add to form
+            // Create buttons
             x = startLocation.X;
             for (int i = 0; i < categories.Count; i++)
             {
@@ -38,7 +38,7 @@ namespace Jeopardy_winForms
                 XmlNodeList questions = categories[i].SelectNodes("question");
                 for (int j = 0; j < questions.Count; j++)
                 {
-                    Button button = new Button
+                    var button = new Button
                     {
                         Text = questions[j].Attributes["value"].Value,
                         Location = new Point(x, y),

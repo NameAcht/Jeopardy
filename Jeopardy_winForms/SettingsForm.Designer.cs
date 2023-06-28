@@ -42,7 +42,7 @@
             this.textBoxAddPlayer.Name = "textBoxAddPlayer";
             this.textBoxAddPlayer.Size = new System.Drawing.Size(143, 23);
             this.textBoxAddPlayer.TabIndex = 1;
-            this.textBoxAddPlayer.TextChanged += new System.EventHandler(this.textBoxAddPlayer_TextChanged);
+            this.textBoxAddPlayer.TextChanged += new System.EventHandler(this.TextBoxAddPlayer_TextChanged);
             // 
             // labelPlayerName
             // 
@@ -80,7 +80,7 @@
             this.buttonAddPlayer.TabIndex = 0;
             this.buttonAddPlayer.Text = "Add Player";
             this.buttonAddPlayer.UseVisualStyleBackColor = true;
-            this.buttonAddPlayer.Click += new System.EventHandler(this.buttonAddPlayer_Click);
+            this.buttonAddPlayer.Click += new System.EventHandler(this.ButtonAddPlayer_Click);
             // 
             // buttonDeletePlayer
             // 

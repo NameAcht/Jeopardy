@@ -46,7 +46,7 @@
             this.buttonSettings.Size = new System.Drawing.Size(100, 100);
             this.buttonSettings.TabIndex = 6;
             this.buttonSettings.UseVisualStyleBackColor = false;
-            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
+            this.buttonSettings.Click += new System.EventHandler(this.ButtonSettings_Click);
             // 
             // listView1
             // 

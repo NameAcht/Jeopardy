@@ -8,24 +8,19 @@
     "net7.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\opfer\\.nuget\\packages\\": {},
-    "D:\\Program Files (x86)\\VisualStudioSharedInstallation\\NuGetPackages": {}
+    "C:\\Users\\opfer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
+      "projectUniqueName": "D:\\repos\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
       "projectName": "Jeopardy_winForms",
-      "projectPath": "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
+      "projectPath": "D:\\repos\\Jeopardy_winForms\\Jeopardy_winForms.csproj",
       "packagesPath": "C:\\Users\\opfer\\.nuget\\packages\\",
-      "outputPath": "D:\\repos\\Jeopardy_winForms\\Jeopardy\\Jeopardy_winForms\\obj\\",
+      "outputPath": "D:\\repos\\Jeopardy_winForms\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\Program Files (x86)\\VisualStudioSharedInstallation\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\opfer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +28,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -70,7 +64,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
