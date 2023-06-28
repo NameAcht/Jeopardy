@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml;
+﻿using System.Xml;
 
 namespace Jeopardy_winForms
 {
@@ -68,47 +59,37 @@ namespace Jeopardy_winForms
         {
             Load += Form2_Load;
             InitializeComponent();
+            textBoxAddPlayer.KeyDown += ButtonAddPlayer_Click;
         }
 
         private void ButtonAddPlayer_Click(object sender, EventArgs e)
         {
-            // Don't add player if no text was given
+            if (sender is TextBox && (e as KeyEventArgs).KeyCode != Keys.Enter) return;
             if (textBoxAddPlayer.Text == "")
                 return;
 
             var config = new XmlDocument();
             config.Load("save/config.xml");
 
-            // Get the parent node where the new player node will be added
             var playersNode = config.SelectSingleNode("jeopardy/players");
-
-            // Create a new player node
             var playerNode = config.CreateElement("player");
-
-
-            // Add the player's information as child nodes to the player node
             var nameNode = config.CreateElement("name");
+            
             nameNode.InnerText = textBoxAddPlayer.Text;
             playerNode.AppendChild(nameNode);
-
             var scoreNode = config.CreateElement("score");
             scoreNode.InnerText = "0";
             playerNode.AppendChild(scoreNode);
-
-
-            // Append the new player node to the players parent node
             playersNode.AppendChild(playerNode);
-
-            // Clear playername textbox
             textBoxAddPlayer.Clear();
-
             config.Save("save/config.xml");
-
             UpdatePlayerDisplay();
         }
 
         private void buttonDeletePlayer_Click(object sender, EventArgs e)
         {
+            if(listBoxPlayers.SelectedItems.Count == 0) return;
+
             var result = MessageBox.Show("Are you sure you want to delete this player?\n" + listBoxPlayers.SelectedItem, "Delete Player", MessageBoxButtons.YesNo);
             if(result == DialogResult.Yes)
             {

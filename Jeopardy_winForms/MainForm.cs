@@ -1,3 +1,4 @@
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -15,14 +16,11 @@ namespace Jeopardy_winForms
         {
             for (int i = 0; i < categories.Count; i++)
             {
-                // Get the name of the current category
                 string categoryName = categories[i].Attributes["name"].Value;
 
-                // Find the label control for the current category
                 string labelName = "labelCat" + (i + 1).ToString();
                 Label categoryLabel = Controls.Find(labelName, true).FirstOrDefault() as Label;
 
-                // Set the text of the label to the category name
                 categoryLabel.Text = categoryName;
             }
         }
@@ -35,12 +33,19 @@ namespace Jeopardy_winForms
             ConnectQuestionButtons();
             UpdateLabelNames(categories);
             UpdateStandings();
+
+            var properties = IPGlobalProperties.GetIPGlobalProperties();
+            var connections = properties.GetActiveTcpConnections();
+
+            // Iterate through all connections with port 50000 (Game port)
+            foreach (var t in connections.ToList().FindAll(connection => connection.RemoteEndPoint.Port == 50000))
+                MessageBox.Show("obama");
         }
 
         public void RecalculateSizesPositions()
         {
             buttonSettings.Location = new Point(Size.Width - 128, 9);
-            listView1.Location = new Point(buttonSettings.Location.X - 100, buttonSettings.Location.Y + 106);
+            listViewStandings.Location = new Point(buttonSettings.Location.X - 100, buttonSettings.Location.Y + 106);
         }
 
         public void MainForm_Resize(object sender, EventArgs e)
@@ -74,7 +79,7 @@ namespace Jeopardy_winForms
 
         public void UpdateStandings()
         {
-            listView1.Items.Clear();
+            listViewStandings.Items.Clear();
             var config = new XmlDocument();
             config.Load("save/config.xml");
             var players = config.SelectSingleNode("jeopardy/players");
@@ -84,7 +89,7 @@ namespace Jeopardy_winForms
                 playerStrings[0] = player.SelectSingleNode("name").InnerText;
                 playerStrings[1] = player.SelectSingleNode("score").InnerText;
                 var tablePlayer = new ListViewItem(playerStrings);
-                listView1.Items.Add(tablePlayer);
+                listViewStandings.Items.Add(tablePlayer);
             }
         }
         private void UpdateSettings()

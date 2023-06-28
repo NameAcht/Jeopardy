@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonSettings = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewStandings = new System.Windows.Forms.ListView();
             this.columnPlayer = new System.Windows.Forms.ColumnHeader();
             this.columnPoints = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
@@ -50,18 +50,18 @@
             // 
             // listView1
             // 
-            this.listView1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewStandings.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listViewStandings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnPlayer,
             this.columnPoints});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(1372, 115);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(200, 434);
-            this.listView1.TabIndex = 10;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listViewStandings.FullRowSelect = true;
+            this.listViewStandings.GridLines = true;
+            this.listViewStandings.Location = new System.Drawing.Point(1372, 115);
+            this.listViewStandings.Name = "listView1";
+            this.listViewStandings.Size = new System.Drawing.Size(200, 434);
+            this.listViewStandings.TabIndex = 10;
+            this.listViewStandings.UseCompatibleStateImageBehavior = false;
+            this.listViewStandings.View = System.Windows.Forms.View.Details;
             // 
             // columnPlayer
             // 
@@ -79,7 +79,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewStandings);
             this.Controls.Add(this.buttonSettings);
             this.Name = "MainForm";
             this.Text = "Jeopardy";
@@ -90,7 +90,7 @@
         #endregion
 
         private Button buttonSettings;
-        private ListView listView1;
+        private ListView listViewStandings;
         private ColumnHeader columnPlayer;
         private ColumnHeader columnPoints;
     }
